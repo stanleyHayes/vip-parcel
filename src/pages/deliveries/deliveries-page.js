@@ -3,7 +3,7 @@ import {makeStyles} from "@material-ui/styles";
 import Layout from "../../components/layout/layout";
 import {Button, Container, Divider, Grid, TextField, Typography} from "@material-ui/core";
 import {Add} from "@material-ui/icons";
-import CreateDeliveryDialog from "../../components/dialogs/create-delivery-dialog";
+import CreateDeliveryDialog from "../../components/dialogs/deliveries/create-delivery-dialog";
 
 const DeliveriesPage = () => {
     const useStyles = makeStyles(theme => {

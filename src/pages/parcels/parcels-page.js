@@ -3,7 +3,7 @@ import {makeStyles} from "@material-ui/styles";
 import Layout from "../../components/layout/layout";
 import {Button, Container, Divider, Grid, TextField, Typography} from "@material-ui/core";
 import {Add} from "@material-ui/icons";
-import CreateParcelDialog from "../../components/dialogs/create-parcel-dialog";
+import CreateParcelDialog from "../../components/dialogs/parcels/create-parcel-dialog";
 
 const ParcelsPage = () => {
     const useStyles = makeStyles(theme => {

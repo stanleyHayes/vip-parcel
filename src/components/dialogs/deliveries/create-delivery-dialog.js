@@ -32,7 +32,7 @@ const CreateDeliveryDialog = ({open, handleClose}) => {
         paymentMethod: "CASH",
         sourceOffice: " ",
         destinationOffice: " ",
-        parcel: " ",
+        parcel: " "
     });
     const [error, setError] = useState({});
     const {
@@ -47,7 +47,7 @@ const CreateDeliveryDialog = ({open, handleClose}) => {
         currency,
         information,
         paymentMethod,
-        paymentReference
+        paymentReference,
     } = delivery;
 
     const handleDeliveryChange = event => {
