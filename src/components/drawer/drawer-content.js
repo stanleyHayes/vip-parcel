@@ -16,6 +16,9 @@ const DrawerContent = () => {
                 paddingTop:84,
                 minHeight: '100vh',
                 backgroundColor: theme.palette.background.paper,
+                borderRightStyle: 'solid',
+                borderRightWidth: 1,
+                borderColor: variant === 'dark' ? 'rgb(23, 58, 94)' : 'rgb(234, 238, 243)',
             },
             link: {
                 textDecoration: 'none',

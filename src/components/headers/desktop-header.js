@@ -3,7 +3,7 @@ import {Badge, Button, Grid, makeStyles, Menu, MenuItem, TextField, Toolbar, Typ
 import {useDispatch, useSelector} from "react-redux";
 import {selectUI} from "../../redux/ui/ui-reducer";
 import {Link} from "react-router-dom";
-import {Brightness4, Brightness7, KeyboardArrowDown, KeyboardArrowUp, Notifications} from "@material-ui/icons";
+import {Brightness4, Brightness7, Notifications} from "@material-ui/icons";
 import {toggleTheme} from "../../redux/ui/ui-action-creators";
 
 const DesktopHeader = () => {
@@ -26,17 +26,22 @@ const DesktopHeader = () => {
                 backgroundColor: variant === 'dark' ? 'rgb(23, 58, 94)' : 'rgb(234, 238, 243)'
             },
             gridItem: {
-                marginRight: 8
+                marginRight: 16
             },
             icon: {
-                padding: 4,
+                padding: 8,
                 borderRadius: 8,
                 borderWidth: 1,
                 borderStyle: 'solid',
                 borderColor: variant === 'dark' ? 'rgb(23, 58, 94)' : 'rgb(234, 238, 243)',
                 backgroundColor: variant === 'dark' ? 'rgb(23, 58, 94, 0.5)' : 'rgb(234, 238, 243, 0.5)',
                 color: variant === 'dark' ? 'rgb(234, 238, 243, 0.5)' : 'rgb(23, 58, 94, 0.5)',
+                width: 32,
+                height: 32
             },
+            button: {
+                backgroundColor: variant === 'dark' ? 'rgb(23, 58, 94, 0.5)' : 'rgb(234, 238, 243, 0.5)',
+            }
         }
     });
 
@@ -62,21 +67,22 @@ const DesktopHeader = () => {
             <Grid container={true} alignItems="center" justifyContent="space-between">
                 <Grid item={true} lg={3}>
                     <Link to="/" className={classes.link}>
-                        <Typography color="textPrimary" className={classes.brand} variant="h5">VIP Parcel
-                            Office</Typography>
+                        <Typography color="textPrimary" className={classes.brand} variant="h5">
+                            VIP Parcel Office
+                        </Typography>
                     </Link>
                 </Grid>
-                <Grid item={true} lg={6}>
-                    <TextField
-                        fullWidth={true}
-                        className={classes.textField}
-                        placeholder="Search..."
-                        margin="dense"
-                        variant="outlined"
-                        name="search"
-                    />
-                </Grid>
-                <Grid item={true} container={true} lg={3} justifyContent="flex-end" alignItems="center">
+                <Grid item={true} container={true} lg={6} justifyContent="flex-end" alignItems="center">
+                    <Grid item={true} className={classes.gridItem}>
+                        <TextField
+                            fullWidth={true}
+                            className={classes.textField}
+                            placeholder="Search..."
+                            margin="dense"
+                            variant="outlined"
+                            name="search"
+                        />
+                    </Grid>
                     <Grid item={true} className={classes.gridItem}>
                         <Badge badgeContent={6} color="secondary">
                             <Notifications className={classes.icon}/>
@@ -89,22 +95,18 @@ const DesktopHeader = () => {
                     </Grid>
                     <Grid item={true} className={classes.gridItem}>
                         <Button
-                            endIcon={menuOpen ? (
-                                <KeyboardArrowUp onClick={handleMenuClose}/>
-                            ) : (
-                                <KeyboardArrowDown onClick={handleMenuClick}/>
-                            )}
+                            className={classes.button}
                             onClick={handleMenuClick}
-                            variant="text"
+                            variant="outlined"
                             size="small">SH</Button>
                         <Menu anchorEl={anchorEl} variant="menu" open={menuOpen} onClose={handleMenuClose}>
                             <MenuItem>
                                 <Link to="/profile" className={classes.link}>
-                                    <Button className={classes.button} variant="text" size="large">Profile</Button>
+                                    <Button variant="text" size="small">Profile</Button>
                                 </Link>
                             </MenuItem>
                             <MenuItem>
-                                <Button className={classes.button} variant="text" size="large">Logout</Button>
+                                <Button variant="text" size="small">Logout</Button>
                             </MenuItem>
                         </Menu>
                     </Grid>
