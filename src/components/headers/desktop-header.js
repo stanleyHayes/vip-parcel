@@ -23,7 +23,6 @@ const DesktopHeader = () => {
                 textTransform: 'uppercase'
             },
             textField: {
-                borderRadius: 32,
                 backgroundColor: variant === 'dark' ? 'rgb(23, 58, 94)' : 'rgb(234, 238, 243)'
             },
             gridItem: {
@@ -84,16 +83,20 @@ const DesktopHeader = () => {
                         </Badge>
                     </Grid>
                     <Grid item={true} className={classes.gridItem}>
+                        {variant === 'dark' ? (
+                            <Brightness7 onClick={() => dispatch(toggleTheme())} className={classes.icon}/>
+                        ) : <Brightness4 onClick={() => dispatch(toggleTheme())} className={classes.icon}/>}
+                    </Grid>
+                    <Grid item={true} className={classes.gridItem}>
                         <Button
                             endIcon={menuOpen ? (
                                 <KeyboardArrowUp onClick={handleMenuClose}/>
                             ) : (
                                 <KeyboardArrowDown onClick={handleMenuClick}/>
                             )}
-                            className={classes.icon}
                             onClick={handleMenuClick}
                             variant="text"
-                            size="large">SH</Button>
+                            size="small">SH</Button>
                         <Menu anchorEl={anchorEl} variant="menu" open={menuOpen} onClose={handleMenuClose}>
                             <MenuItem>
                                 <Link to="/profile" className={classes.link}>
@@ -104,11 +107,6 @@ const DesktopHeader = () => {
                                 <Button className={classes.button} variant="text" size="large">Logout</Button>
                             </MenuItem>
                         </Menu>
-                    </Grid>
-                    <Grid item={true} className={classes.gridItem}>
-                        {variant === 'dark' ? (
-                            <Brightness7 onClick={() => dispatch(toggleTheme())} className={classes.icon}/>
-                        ) : <Brightness4 onClick={() => dispatch(toggleTheme())} className={classes.icon}/>}
                     </Grid>
                 </Grid>
             </Grid>
