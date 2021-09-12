@@ -27,11 +27,17 @@ const ForgotPasswordPage = () => {
             imageContainer: {
                 height: '100vh',
                 maxHeight: '100vh',
-                flexBasis: '50%'
+                flexBasis: '50%',
+                [theme.breakpoints.down('sm')]: {
+                    flexBasis: '0%'
+                }
             },
             formContainer: {
                 flexBasis: '50%',
-                maxHeight: '100vh'
+                maxHeight: '100vh',
+                [theme.breakpoints.down('sm')]: {
+                    flexBasis: '100%'
+                }
             },
             textField: {},
             link: {
@@ -62,7 +68,12 @@ const ForgotPasswordPage = () => {
             form: {
                 alignSelf: "flex-start"
             },
-            backButton: {}
+            backButton: {
+                marginLeft: -8
+            },
+            footerText: {
+                fontSize: 10
+            }
         }
     });
 
@@ -89,7 +100,7 @@ const ForgotPasswordPage = () => {
             setError('Invalid email');
             return;
         } else {
-            setError({error, email: null});
+            setError(null);
         }
         console.log(email);
     }
@@ -106,9 +117,10 @@ const ForgotPasswordPage = () => {
                         <Grid item={true} xs={12} md={8} lg={6} className={classes.gridItem}>
                             <Box>
                                 <Typography
+                                    align="center"
                                     color="textPrimary"
                                     className={classes.brand}
-                                    variant="h3">Vip Parcel</Typography>
+                                    variant="h3">GOFER</Typography>
                             </Box>
                             <form className={classes.form} onSubmit={handleSubmit}>
                                 <Link
@@ -166,20 +178,20 @@ const ForgotPasswordPage = () => {
                             <Box>
                                 <Grid container={true} alignItems="center" justifyContent="space-between">
                                     <Grid item={true}>
-                                        <Typography color="textSecondary" variant="body2">
-                                            &copy;2021 VIP Parcel
+                                        <Typography className={classes.footerText} color="textSecondary" variant="body2">
+                                            &copy;2021 GOFER
                                         </Typography>
                                     </Grid>
                                     <Grid item={true}>
                                         <Link className={classes.link} to="/terms" variant="body2">
-                                            <Typography color="textSecondary" variant="body2">
-                                                &copy;2021 VIP Parcel
+                                            <Typography className={classes.footerText} color="textSecondary" variant="body2">
+                                                Terms & Conditions
                                             </Typography>
                                         </Link>
                                     </Grid>
                                     <Grid item={true}>
-                                        <Link className={classes.link} to="/terms" variant="body2">
-                                            <Typography color="textSecondary" variant="body2">
+                                        <Link className={classes.link} to="/privacy" variant="body2">
+                                            <Typography className={classes.footerText} color="textSecondary" variant="body2">
                                                 Privacy Policy
                                             </Typography>
                                         </Link>

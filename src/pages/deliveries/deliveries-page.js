@@ -26,11 +26,11 @@ const DeliveriesPage = () => {
     return (
         <Layout>
             <Container className={classes.container}>
-                <Grid container={true} justifyContent="space-between" alignItems="center">
-                    <Grid item={true} sm={12} md={4}>
+                <Grid container={true} justifyContent="space-between" alignItems="center" spacing={2}>
+                    <Grid item={true} xs={12} md={4}>
                         <Typography variant="h4" color="textPrimary">Deliveries</Typography>
                     </Grid>
-                    <Grid item={true} sm={12} md={4}>
+                    <Grid item={true} xs={12} md={4}>
                         <TextField
                             fullWidth={true}
                             className={classes.textField}
@@ -38,11 +38,13 @@ const DeliveriesPage = () => {
                             margin="dense"
                             variant="outlined"
                             name="search"
+                            type="text"
                         />
                     </Grid>
 
-                    <Grid item={true} sm={12} md={4} container={true} justifyContent="flex-end" alignItems="center">
+                    <Grid item={true} xs={12} md={4} container={true} justifyContent="flex-end" alignItems="center">
                         <Button
+                            fullWidth={true}
                             onClick={() => setOpenDialog(true)}
                             color="secondary"
                             className={classes.addButton}

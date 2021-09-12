@@ -24,16 +24,19 @@ const MobileHeader = ({handleDrawerOpen}) => {
                 borderStyle: 'solid',
                 borderColor: variant === 'dark' ? 'rgb(23, 58, 94)' : 'rgb(234, 238, 243)',
                 backgroundColor: variant === 'dark' ? 'rgb(23, 58, 94, 0.5)' : 'rgb(234, 238, 243, 0.5)',
-                color: variant === 'dark' ? 'rgb(234, 238, 243, 0.5)' : 'rgb(23, 58, 94, 0.5)',
+                color: variant === 'dark' ? 'rgba(37,65,255,0.75)' : 'rgb(23, 58, 94, 0.5)',
+                width: 30,
+                height: 30
             },
             link: {
                 textDecoration: 'none'
             },
             brand: {
-                textTransform: 'uppercase'
+                textTransform: 'uppercase',
+                fontWeight: 'bold'
             },
             gridItem: {
-                marginRight: 8
+
             },
         }
     });
@@ -58,16 +61,15 @@ const MobileHeader = ({handleDrawerOpen}) => {
     return (
         <Toolbar className={classes.toolbar} variant="dense">
             <Grid container={true} justifyContent="space-between" alignItems="center">
-                <Grid item={true}>
+                <Grid item={true} xs={2}>
                     <MenuIcon className={classes.icon} onClick={handleDrawerOpen} />
                 </Grid>
-                <Grid item={true} lg={3}>
+                <Grid item={true} xs={6}>
                     <Link to="/" className={classes.link}>
-                        <Typography color="textPrimary" className={classes.brand} variant="body1">VIP Parcel
-                            Office</Typography>
+                        <Typography color="textPrimary" className={classes.brand} variant="body1">GOFER</Typography>
                     </Link>
                 </Grid>
-                <Grid item={true} className={classes.gridItem}>
+                <Grid item={true} xs={3} className={classes.gridItem}>
                     <Button
                         endIcon={menuOpen ? (
                             <KeyboardArrowUp onClick={handleMenuClose}/>
@@ -89,7 +91,7 @@ const MobileHeader = ({handleDrawerOpen}) => {
                         </MenuItem>
                     </Menu>
                 </Grid>
-                <Grid item={true} className={classes.gridItem}>
+                <Grid item={true} xs={1} className={classes.gridItem}>
                     {variant === 'dark' ? (
                         <Brightness7 onClick={() => dispatch(toggleTheme())} className={classes.icon}/>
                     ) : <Brightness4 onClick={() => dispatch(toggleTheme())} className={classes.icon}/>}

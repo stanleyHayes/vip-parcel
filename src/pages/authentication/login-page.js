@@ -26,11 +26,17 @@ const LoginPage = () => {
             imageContainer: {
                 height: '100vh',
                 maxHeight: '100vh',
-                flexBasis: '50%'
+                flexBasis: '50%',
+                [theme.breakpoints.down('sm')]: {
+                    flexBasis: '0%'
+                }
             },
             formContainer: {
                 flexBasis: '50%',
-                maxHeight: '100vh'
+                maxHeight: '100vh',
+                [theme.breakpoints.down('sm')]: {
+                    flexBasis: '100%'
+                }
             },
             textField: {},
             link: {
@@ -60,6 +66,9 @@ const LoginPage = () => {
             },
             form: {
                 alignSelf: "flex-start"
+            },
+            footerText: {
+                fontSize: 10
             }
         }
     });
@@ -113,10 +122,11 @@ const LoginPage = () => {
                         <Grid item={true} xs={12} md={8} lg={6} className={classes.gridItem}>
                             <Box>
                                 <Typography
+                                    align="center"
                                     color="textPrimary"
                                     className={classes.brand}
                                     variant="h3">
-                                    Vip Parcel
+                                    GOFER
                                 </Typography>
                             </Box>
                             <form className={classes.form} onSubmit={handleSubmit}>
@@ -128,7 +138,7 @@ const LoginPage = () => {
                                     Welcome Back!
                                 </Typography>
                                 <Typography color="textSecondary" gutterBottom={true} variant="body2">
-                                    Please sign in to your VIP Parcel account
+                                    Please sign in to your GOFER account
                                 </Typography>
                                 <TextField
                                     name="email"
@@ -201,18 +211,18 @@ const LoginPage = () => {
                                 <Grid container={true} alignItems="center" justifyContent="space-between">
                                     <Grid item={true}>
                                         <Typography color="textSecondary" variant="body2">
-                                            &copy;2021 VIP Parcel
+                                            &copy;2021 GOFER
                                         </Typography>
                                     </Grid>
                                     <Grid item={true}>
                                         <Link className={classes.link} to="/terms" variant="body2">
                                             <Typography color="textSecondary" variant="body2">
-                                                &copy;2021 VIP Parcel
+                                                Terms & Conditions
                                             </Typography>
                                         </Link>
                                     </Grid>
                                     <Grid item={true}>
-                                        <Link className={classes.link} to="/terms" variant="body2">
+                                        <Link className={classes.link} to="/privacy" variant="body2">
                                             <Typography color="textSecondary" variant="body2">
                                                 Privacy Policy
                                             </Typography>

@@ -36,16 +36,16 @@ const MobileDrawerContent = ({handleDrawerClose}) => {
                 borderColor: variant === 'dark' ? 'rgb(23, 58, 94)' : 'rgb(234, 238, 243)',
                 backgroundColor: variant === 'dark' ? 'rgb(23, 58, 94, 0.5)' : 'rgb(234, 238, 243, 0.5)',
                 color: variant === 'dark' ? 'rgba(37,65,255,0.75)' : 'rgb(23, 58, 94)',
-                width: 15,
-                height: 15
+                width: 25,
+                height: 25
             },
             iconRight: {
                 padding: 4,
                 borderRadius: 8,
                 borderWidth: 1,
                 color: variant === 'dark' ? 'rgba(37,65,255,0.75)' : 'rgb(23, 58, 94)',
-                width: 15,
-                height: 15
+                width: 25,
+                height: 25
             },
             divider: {
                 marginTop: 8,
@@ -115,7 +115,7 @@ const MobileDrawerContent = ({handleDrawerClose}) => {
                 <Divider light={true} className={classes.divider} variant="middle"/>
 
                 <Grid item={true} alignItems="center" container={true} justifyContent="space-around">
-                    <Link to="/parcels" className={classes.link}>
+                    <Link to="/archives" className={classes.link}>
                         <Button
                             startIcon={<Dashboard className={classes.icon}/>}
                             fullWidth={true}

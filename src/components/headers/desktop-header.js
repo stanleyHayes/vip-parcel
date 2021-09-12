@@ -68,7 +68,7 @@ const DesktopHeader = () => {
                 <Grid item={true} lg={3}>
                     <Link to="/" className={classes.link}>
                         <Typography color="textPrimary" className={classes.brand} variant="h5">
-                            VIP Parcel Office
+                            GOFER
                         </Typography>
                     </Link>
                 </Grid>
