@@ -5,7 +5,7 @@ const darkTheme = createTheme({
         type: 'dark',
         background: {
             default: '#001E3CF2',
-            paper: '#001E3CFF'
+            paper: '#001428'
         },
         text: {
             primary: '#ffffff',
@@ -16,10 +16,10 @@ const darkTheme = createTheme({
         }
     },
     typography: {
-        fontFamily: 'Raleway, IBM Plex Sans, Urbanist'
+        fontFamily: 'Urbanist,Raleway, IBM Plex Sans'
     },
     shape: {
-        borderRadius: 4
+        borderRadius: 16
     }
 });
 
@@ -39,10 +39,10 @@ const lightTheme = createTheme({
         }
     },
     typography: {
-        fontFamily: 'Raleway, IBM Plex Sans, Urbanist'
+        fontFamily: 'Urbanist, Raleway, IBM Plex Sans'
     },
     shape: {
-        borderRadius: 4
+        borderRadius: 16
     }
 });
 

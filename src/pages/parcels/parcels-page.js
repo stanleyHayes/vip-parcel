@@ -21,6 +21,9 @@ const ParcelsPage = () => {
     const useStyles = makeStyles(theme => {
         return {
             container: {
+                paddingTop: 82
+            },
+            loadingContainer: {
                 paddingTop: 12
             },
             emptyText: {
@@ -51,7 +54,7 @@ const ParcelsPage = () => {
     return (
         <Layout>
             {parcelLoading && <LinearProgress className={classes.loading} variant="query" color="secondary"/>}
-            <Container className={classes.container}>
+            <Container className={parcelLoading ? classes.loadingContainer : classes.container}>
                 <Grid container={true} alignItems="center" spacing={2}>
                     <Grid item={true} xs={12} md={4}>
                         <Typography variant="h4" color="textPrimary">Parcels</Typography>

@@ -21,6 +21,9 @@ const DeliveriesPage = () => {
     const useStyles = makeStyles(theme => {
         return {
             container: {
+                paddingTop: 82
+            },
+            loadingContainer: {
                 paddingTop: 12
             },
             emptyText: {
@@ -52,7 +55,7 @@ const DeliveriesPage = () => {
     return (
         <Layout>
             {deliveryLoading && <LinearProgress className={classes.loading} variant="query" color="secondary"/>}
-            <Container className={classes.container}>
+            <Container className={deliveryLoading ? classes.loadingContainer : classes.container}>
                 <Grid container={true} justifyContent="space-between" alignItems="center" spacing={2}>
                     <Grid item={true} xs={12} md={4}>
                         <Typography variant="h4" color="textPrimary">Deliveries</Typography>

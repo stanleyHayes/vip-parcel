@@ -81,6 +81,7 @@ const DesktopHeader = () => {
                             margin="dense"
                             variant="outlined"
                             name="search"
+                            label="Search"
                         />
                     </Grid>
                     <Grid item={true} className={classes.gridItem}>

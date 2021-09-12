@@ -1,7 +1,7 @@
 const INITIAL_STATE = {
     parcels: [],
-    parcelLoading: true,
-    parcelError: "Permission Denied"
+    parcelLoading: false,
+    parcelError: ""
 };
 
 const parcelReducer = (state = INITIAL_STATE, action) => {
