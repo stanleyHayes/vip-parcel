@@ -59,7 +59,7 @@ const MobileHeader = ({handleDrawerOpen}) => {
     const dispatch = useDispatch();
 
     return (
-        <Toolbar className={classes.toolbar} variant="dense">
+        <Toolbar className={classes.toolbar} variant="regular">
             <Grid container={true} justifyContent="space-between" alignItems="center">
                 <Grid item={true} xs={2}>
                     <MenuIcon className={classes.icon} onClick={handleDrawerOpen} />

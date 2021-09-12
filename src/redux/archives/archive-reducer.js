@@ -1,5 +1,7 @@
 const INITIAL_STATE = {
-    archives: []
+    archives: [],
+    archiveLoading: true,
+    archiveError: "Permission Denied"
 };
 
 const archiveReducer = (state = INITIAL_STATE, action) => {

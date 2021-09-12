@@ -106,7 +106,7 @@ const DrawerContent = () => {
                     <Box>
                         <Dashboard className={classes.icon}/>
                     </Box>
-                    <Link to="/parcels" className={classes.link}>
+                    <Link to="/archives" className={classes.link}>
                         <Button
                             fullWidth={true}
                             variant="text"

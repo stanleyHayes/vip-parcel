@@ -1,5 +1,7 @@
 const INITIAL_STATE = {
-    deliveries: []
+    deliveries: [],
+    deliveryLoading: true,
+    deliveryError: "Permission Denied"
 };
 
 const deliveriesReducer = (state = INITIAL_STATE, action) => {
