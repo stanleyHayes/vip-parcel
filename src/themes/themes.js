@@ -19,7 +19,7 @@ const darkTheme = createTheme({
         fontFamily: 'Urbanist,Raleway, IBM Plex Sans'
     },
     shape: {
-        borderRadius: 16
+        borderRadius: 0
     }
 });
 
@@ -42,7 +42,7 @@ const lightTheme = createTheme({
         fontFamily: 'Urbanist, Raleway, IBM Plex Sans'
     },
     shape: {
-        borderRadius: 16
+        borderRadius: 0
     }
 });
 

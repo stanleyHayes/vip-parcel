@@ -2,10 +2,15 @@ import {UI} from './ui-action-types';
 import {CONSTANTS} from "../../constants/constants";
 
 const INITIAL_STATE = {
-    variant: localStorage.getItem(CONSTANTS.VIP_PARCEL_TOKEN_KEY) ? JSON.parse(localStorage.getItem(CONSTANTS.VIP_PARCEL_TOKEN_KEY)) : 'dark'
+    variant: localStorage.getItem(CONSTANTS.GOFER_OFFICER_THEME_KEY) ? JSON.parse(localStorage.getItem(CONSTANTS.GOFER_OFFICER_THEME_KEY)) : 'dark'
 };
 
 const uiReducer = (state = INITIAL_STATE, action) => {
+
+    if(action.type === UI.TOGGLE_THEME){
+        localStorage.setItem(CONSTANTS.GOFER_OFFICER_THEME_KEY, JSON.stringify(state.variant === 'dark' ? 'light' : 'dark'));
+    }
+
     switch (action.type) {
         case UI.TOGGLE_THEME:
             return {

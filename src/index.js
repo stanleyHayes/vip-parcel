@@ -12,7 +12,7 @@ import {CONSTANTS} from "./constants/constants";
 import DateFnsUtils from '@date-io/date-fns';
 import {MuiPickersUtilsProvider} from "@material-ui/pickers";
 
-const variant = localStorage.getItem(CONSTANTS.VIP_PARCEL_TOKEN_KEY) ? JSON.parse(localStorage.getItem(CONSTANTS.VIP_PARCEL_TOKEN_KEY)) : 'dark';
+const variant = localStorage.getItem(CONSTANTS.GOFER_OFFICER_THEME_KEY) ? JSON.parse(localStorage.getItem(CONSTANTS.GOFER_OFFICER_THEME_KEY)) : 'dark';
 ReactDOM.render(
     <React.StrictMode>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>

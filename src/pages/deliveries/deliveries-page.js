@@ -6,12 +6,12 @@ import {
     Container,
     Divider,
     Grid,
-    LinearProgress,
-    TableContainer,
+    LinearProgress, Paper, Table, TableBody, TableCell,
+    TableContainer, TableHead, TableRow,
     TextField,
     Typography
 } from "@material-ui/core";
-import {Add} from "@material-ui/icons";
+import {Add, Edit, Visibility} from "@material-ui/icons";
 import CreateDeliveryDialog from "../../components/dialogs/deliveries/create-delivery-dialog";
 import {useSelector} from "react-redux";
 import {selectDeliveries} from "../../redux/deliveries/delivery-reducer";
@@ -42,7 +42,9 @@ const DeliveriesPage = () => {
             },
             errorText: {
                 textTransform: 'uppercase'
-            }
+            },
+            image: {},
+            icon: {width: 20, height: 20}
         }
     });
 
@@ -96,8 +98,48 @@ const DeliveriesPage = () => {
                             available</Typography>
                     </React.Fragment>
                 ) : (
-                    <TableContainer>
-
+                    <TableContainer component={Paper}>
+                        <Table size="small">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell align="center">#</TableCell>
+                                    <TableCell align="center">Sender</TableCell>
+                                    <TableCell align="center">Recipient</TableCell>
+                                    <TableCell align="center">Service Officer</TableCell>
+                                    <TableCell align="center">Driver</TableCell>
+                                    <TableCell align="center">Parcel</TableCell>
+                                    <TableCell align="center">Price</TableCell>
+                                    <TableCell align="center">Status</TableCell>
+                                    <TableCell align="center">Tracking</TableCell>
+                                    <TableCell align="center">Bus</TableCell>
+                                    <TableCell align="center">Actions</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {deliveries.map((delivery, index) => {
+                                    return (
+                                        <TableRow key={index}>
+                                            <TableCell align="center">{index + 1}</TableCell>
+                                            <TableCell align="center">{`${delivery.sender.name} (${delivery.sender.phone})`}</TableCell>
+                                            <TableCell align="center">{`${delivery.recipient.name} (${delivery.recipient.phone})`}</TableCell>
+                                            <TableCell align="center">{`${delivery.sourceOfficer.name} (${delivery.sourceOfficer.phone})`}</TableCell>
+                                            <TableCell align="center">{`${delivery.driver.name} (${delivery.driver.phone})`}</TableCell>
+                                            <TableCell align="center">{delivery.parcel.item}</TableCell>
+                                            <TableCell align="center">{delivery.price.currency} {parseFloat(delivery.price.amount).toFixed(2)}</TableCell>
+                                            <TableCell align="center">{delivery.status}</TableCell>
+                                            <TableCell align="center">{delivery.tracking}</TableCell>
+                                            <TableCell align="center">{delivery.bus.number}</TableCell>
+                                            <TableCell align="center">
+                                                <Grid container={true} alignItems="center" justifyContent="space-evenly">
+                                                    <Grid item={true}><Visibility className={classes.icon} color="secondary"/></Grid>
+                                                    <Grid item={true}><Edit className={classes.icon} color="secondary"/></Grid>
+                                                </Grid>
+                                            </TableCell>
+                                        </TableRow>
+                                    )
+                                })}
+                            </TableBody>
+                        </Table>
                     </TableContainer>
                 )}
             </Container>

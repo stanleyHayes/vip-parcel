@@ -1,11 +1,21 @@
 import React, {useState} from "react";
 import {makeStyles} from "@material-ui/styles";
 import Layout from "../../components/layout/layout";
-import {Container, Divider, Grid, LinearProgress, TableContainer, TextField, Typography} from "@material-ui/core";
+import {
+    Container,
+    Divider,
+    Grid,
+    LinearProgress, Paper, Table, TableBody,
+    TableCell,
+    TableContainer, TableHead, TableRow,
+    TextField,
+    Typography
+} from "@material-ui/core";
 import CreateParcelDialog from "../../components/dialogs/parcels/create-parcel-dialog";
 import {Alert} from "@material-ui/lab";
 import {useSelector} from "react-redux";
 import {selectArchives} from "../../redux/archives/archive-reducer";
+import {Edit, Visibility} from "@material-ui/icons";
 
 const ArchivesPage = () => {
     const useStyles = makeStyles(theme => {
@@ -32,7 +42,9 @@ const ArchivesPage = () => {
             },
             errorText: {
                 textTransform: 'uppercase'
-            }
+            },
+            image: {},
+            icon: {width: 20, height: 20}
         }
     });
 
@@ -73,8 +85,55 @@ const ArchivesPage = () => {
                         </Typography>
                     </React.Fragment>
                 ) : (
-                    <TableContainer>
-
+                    <TableContainer component={Paper}>
+                        <Table size="small">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell align="center">#</TableCell>
+                                    <TableCell align="center">Sender</TableCell>
+                                    <TableCell align="center">Recipient</TableCell>
+                                    <TableCell align="center">Service Officer</TableCell>
+                                    <TableCell align="center">Driver</TableCell>
+                                    <TableCell align="center">Parcel</TableCell>
+                                    <TableCell align="center">Price</TableCell>
+                                    <TableCell align="center">Status</TableCell>
+                                    <TableCell align="center">Tracking</TableCell>
+                                    <TableCell align="center">Bus</TableCell>
+                                    <TableCell align="center">Actions</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {archives.map((archive, index) => {
+                                    return (
+                                        <TableRow key={index}>
+                                            <TableCell align="center">{index + 1}</TableCell>
+                                            <TableCell
+                                                align="center">{`${archive.sender.name} (${archive.sender.phone})`}</TableCell>
+                                            <TableCell
+                                                align="center">{`${archive.recipient.name} (${archive.recipient.phone})`}</TableCell>
+                                            <TableCell
+                                                align="center">{`${archive.sourceOfficer.name} (${archive.sourceOfficer.phone})`}</TableCell>
+                                            <TableCell
+                                                align="center">{`${archive.driver.name} (${archive.driver.phone})`}</TableCell>
+                                            <TableCell align="center">{archive.parcel.item}</TableCell>
+                                            <TableCell
+                                                align="center">{archive.price.currency} {parseFloat(archive.price.amount).toFixed(2)}</TableCell>
+                                            <TableCell align="center">{archive.status}</TableCell>
+                                            <TableCell align="center">{archive.tracking}</TableCell>
+                                            <TableCell align="center">{archive.bus.number}</TableCell>
+                                            <TableCell align="center">
+                                                <Grid container={true} alignItems="center"
+                                                      justifyContent="space-evenly">
+                                                    <Grid item={true}><Visibility className={classes.icon}
+                                                                                  color="secondary"/></Grid>
+                                                    <Grid item={true}><Edit className={classes.icon} color="secondary"/></Grid>
+                                                </Grid>
+                                            </TableCell>
+                                        </TableRow>
+                                    )
+                                })}
+                            </TableBody>
+                        </Table>
                     </TableContainer>
                 )}
 

@@ -1,5 +1,7 @@
+import {parcels} from "./parcels.data";
+
 const INITIAL_STATE = {
-    parcels: [],
+    parcels: [...parcels],
     parcelLoading: false,
     parcelError: ""
 };

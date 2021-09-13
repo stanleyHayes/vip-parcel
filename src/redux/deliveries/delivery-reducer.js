@@ -1,5 +1,7 @@
+import {deliveries} from "./deliveries.data";
+
 const INITIAL_STATE = {
-    deliveries: [],
+    deliveries: [...deliveries],
     deliveryLoading: false,
     deliveryError: ""
 };

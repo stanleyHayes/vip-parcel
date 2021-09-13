@@ -30,7 +30,12 @@ const ProfilePage = () => {
                 textTransform: "Capitalize",
                 fontSize: 12
             },
-            profileImage: {},
+            profileImage: {
+                width: 75,
+                height: 75,
+                borderRadius: 32,
+                marginBottom: 16
+            },
             name: {},
             officeButton: {
                 fontSize: 12
@@ -104,7 +109,7 @@ const ProfilePage = () => {
                                     fullWidth={true}
                                     color="primary"
                                     className={classes.officeButton}
-                                    startIcon={<LocationOn/>}
+                                    startIcon={<LocationOn className={classes.profileEntryIcon}/>}
                                     variant="body2">
                                     Circle, Accra
                                 </Button>

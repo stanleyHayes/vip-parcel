@@ -1,5 +1,7 @@
+import {archives} from "./archives.data";
+
 const INITIAL_STATE = {
-    archives: [],
+    archives: [...archives],
     archiveLoading: false,
     archiveError: ""
 };

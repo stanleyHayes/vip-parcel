@@ -2,16 +2,17 @@ import React, {useState} from "react";
 import {makeStyles} from "@material-ui/styles";
 import Layout from "../../components/layout/layout";
 import {
+    Avatar,
     Button,
     Container,
     Divider,
     Grid,
-    LinearProgress,
-    TableContainer,
+    LinearProgress, Paper, Table, TableBody, TableCell,
+    TableContainer, TableHead, TableRow,
     TextField,
     Typography
 } from "@material-ui/core";
-import {Add} from "@material-ui/icons";
+import {Add, Edit, Visibility} from "@material-ui/icons";
 import CreateParcelDialog from "../../components/dialogs/parcels/create-parcel-dialog";
 import {useSelector} from "react-redux";
 import {selectParcels} from "../../redux/parcels/parcel-reducer";
@@ -42,7 +43,9 @@ const ParcelsPage = () => {
             },
             errorText: {
                 textTransform: 'uppercase'
-            }
+            },
+            image: {},
+            icon: {width: 20, height: 20}
         }
     });
 
@@ -93,8 +96,44 @@ const ParcelsPage = () => {
                         </Typography>
                     </React.Fragment>
                 ) : (
-                    <TableContainer>
-
+                    <TableContainer component={Paper}>
+                        <Table size="small">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell align="center">#</TableCell>
+                                    <TableCell align="center">Image</TableCell>
+                                    <TableCell align="center">Owner</TableCell>
+                                    <TableCell align="center">Item</TableCell>
+                                    <TableCell align="center">Price</TableCell>
+                                    <TableCell align="center">Weight</TableCell>
+                                    <TableCell align="center">Actions</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {parcels.map((parcel, index) => {
+                                    return (
+                                        <TableRow key={index}>
+                                            <TableCell align="center">{index + 1}</TableCell>
+                                            <TableCell align="center">
+                                                <Grid container={true} justifyContent="center">
+                                                    <Avatar src={parcel.image} key={classes.image}/>
+                                                </Grid>
+                                            </TableCell>
+                                            <TableCell align="center">{parcel.owner.name}</TableCell>
+                                            <TableCell align="center">{parcel.item}</TableCell>
+                                            <TableCell align="center">{parcel.price.currency} {parseFloat(parcel.price.amount).toFixed(2)}</TableCell>
+                                            <TableCell align="center">{parseFloat(parcel.weight.amount).toFixed(2)} {parcel.weight.unit}</TableCell>
+                                            <TableCell align="center">
+                                                <Grid container={true} alignItems="center" justifyContent="space-evenly">
+                                                    <Grid item={true}><Visibility className={classes.icon} color="secondary"/></Grid>
+                                                    <Grid item={true}><Edit className={classes.icon} color="secondary"/></Grid>
+                                                </Grid>
+                                            </TableCell>
+                                        </TableRow>
+                                    )
+                                })}
+                            </TableBody>
+                        </Table>
                     </TableContainer>
                 )}
 
