@@ -4,7 +4,6 @@ import {
     Dialog,
     DialogContent,
     Divider,
-    Grid,
     MenuItem,
     Select,
     TextField,
@@ -21,7 +20,10 @@ const CreateParcelDialog = ({open, handleClose}) => {
                 marginTop: 16,
                 marginBottom: 16
             },
-            textField: {}
+            textField: {
+                marginTop: 8,
+                marginBottom: 8
+            }
         }
     });
 
@@ -108,73 +110,64 @@ const CreateParcelDialog = ({open, handleClose}) => {
                     helperText={error.item}
                 />
 
-                <Grid container={true} alignItems="center" justifyContent="space-between">
-                    <Grid item={true} xs={12}>
-                        <TextField
-                            fullWidth={true}
-                            value={price}
-                            className={classes.textField}
-                            placeholder="Enter item price"
-                            label="Price"
-                            margin="dense"
-                            color="secondary"
-                            variant="outlined"
-                            name="price"
-                            onChange={handleParcelChange}
-                            type="number"
-                            error={error.item}
-                            helperText={error.item}
-                        />
-                    </Grid>
-                    <Grid item={true} xs={12}>
-                        <Select
-                            color="secondary"
-                            margin="dense"
-                            variant="outlined"
-                            fullWidth={true}
-                            label="Weight Unit"
-                            value={currency}
-                            name="currency">
-                            <MenuItem value="">Select Currency</MenuItem>
-                            <MenuItem value="GHS">GHS</MenuItem>
-                            <MenuItem value="USD">USD</MenuItem>
-                        </Select>
-                    </Grid>
-                </Grid>
+                <TextField
+                    fullWidth={true}
+                    value={price}
+                    className={classes.textField}
+                    placeholder="Enter item price"
+                    label="Price"
+                    margin="dense"
+                    color="secondary"
+                    variant="outlined"
+                    name="price"
+                    onChange={handleParcelChange}
+                    type="number"
+                    error={error.item}
+                    helperText={error.item}
+                />
 
-                <Grid container={true} alignItems="center" justifyContent="space-between">
-                    <Grid item={true} xs={12}>
-                        <TextField
-                            fullWidth={true}
-                            value={weight}
-                            className={classes.textField}
-                            placeholder="Enter item weight"
-                            label="Item weight"
-                            margin="dense"
-                            variant="outlined"
-                            name="weight"
-                            color="secondary"
-                            onChange={handleParcelChange}
-                            type="number"
-                            error={error.weight}
-                            helperText={error.weight}
-                        />
-                    </Grid>
-                    <Grid item={true} xs={12}>
-                        <Select
-                            fullWidth={true}
-                            margin="dense"
-                            variant="outlined"
-                            label="Weight Unit"
-                            value={weightUnit}
-                            name="weightUnit">
-                            <MenuItem value="">Select Unit</MenuItem>
-                            <MenuItem value="KG">Kilograms</MenuItem>
-                            <MenuItem value="g">Grams</MenuItem>
-                        </Select>
-                    </Grid>
-                </Grid>
+                <Select
+                    color="secondary"
+                    margin="dense"
+                    className={classes.textField}
+                    variant="outlined"
+                    fullWidth={true}
+                    label="Weight Unit"
+                    value={currency}
+                    name="currency">
+                    <MenuItem value="">Select Currency</MenuItem>
+                    <MenuItem value="GHS">GHS</MenuItem>
+                    <MenuItem value="USD">USD</MenuItem>
+                </Select>
 
+                <TextField
+                    fullWidth={true}
+                    value={weight}
+                    className={classes.textField}
+                    placeholder="Enter item weight"
+                    label="Item weight"
+                    margin="dense"
+                    variant="outlined"
+                    name="weight"
+                    color="secondary"
+                    onChange={handleParcelChange}
+                    type="number"
+                    error={error.weight}
+                    helperText={error.weight}
+                />
+
+                <Select
+                    fullWidth={true}
+                    margin="dense"
+                    className={classes.textField}
+                    variant="outlined"
+                    label="Weight Unit"
+                    value={weightUnit}
+                    name="weightUnit">
+                    <MenuItem value="">Select Unit</MenuItem>
+                    <MenuItem value="KG">Kilograms</MenuItem>
+                    <MenuItem value="g">Grams</MenuItem>
+                </Select>
 
                 <TextField
                     fullWidth={true}

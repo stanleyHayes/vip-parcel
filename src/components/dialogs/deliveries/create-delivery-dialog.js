@@ -4,7 +4,6 @@ import {
     Dialog,
     DialogContent,
     Divider,
-    Grid,
     MenuItem,
     Select,
     TextField,
@@ -21,7 +20,10 @@ const CreateDeliveryDialog = ({open, handleClose}) => {
                 marginTop: 16,
                 marginBottom: 16
             },
-            textField: {}
+            textField: {
+                marginTop: 8,
+                marginBottom: 8
+            }
         }
     });
 
@@ -185,6 +187,7 @@ const CreateDeliveryDialog = ({open, handleClose}) => {
                 <Select
                     color="secondary"
                     margin="dense"
+                    className={classes.textField}
                     variant="outlined"
                     fullWidth={true}
                     label="Parcel"
@@ -200,6 +203,7 @@ const CreateDeliveryDialog = ({open, handleClose}) => {
                     color="secondary"
                     margin="dense"
                     variant="outlined"
+                    className={classes.textField}
                     fullWidth={true}
                     label="Source Office"
                     value={sourceOffice}
@@ -217,6 +221,7 @@ const CreateDeliveryDialog = ({open, handleClose}) => {
                     variant="outlined"
                     fullWidth={true}
                     defaultValue=" "
+                    className={classes.textField}
                     label="Destination Office"
                     value={destinationOffice}
                     onChange={handleDeliveryChange}
@@ -227,47 +232,44 @@ const CreateDeliveryDialog = ({open, handleClose}) => {
                 </Select>
 
 
-                <Grid container={true} alignItems="center" justifyContent="space-between">
-                    <Grid item={true} xs={12}>
-                        <TextField
-                            fullWidth={true}
-                            value={price}
-                            className={classes.textField}
-                            placeholder="Enter item price"
-                            label="Price"
-                            margin="dense"
-                            color="secondary"
-                            variant="outlined"
-                            name="price"
-                            onChange={handleDeliveryChange}
-                            type="number"
-                            error={error.item}
-                            helperText={error.item}
-                        />
-                    </Grid>
-                    <Grid item={true} xs={12}>
-                        <Select
-                            color="secondary"
-                            margin="dense"
-                            variant="outlined"
-                            fullWidth={true}
-                            label="Currency"
-                            value={currency}
-                            name="currency">
-                            <MenuItem value="">Select Currency</MenuItem>
-                            <MenuItem value="GHS">GHS</MenuItem>
-                            <MenuItem value="USD">USD</MenuItem>
-                        </Select>
-                    </Grid>
-                </Grid>
+                <TextField
+                    fullWidth={true}
+                    value={price}
+                    className={classes.textField}
+                    placeholder="Enter item price"
+                    label="Price"
+                    margin="dense"
+                    color="secondary"
+                    variant="outlined"
+                    name="price"
+                    onChange={handleDeliveryChange}
+                    type="number"
+                    error={error.item}
+                    helperText={error.item}
+                />
+
+                <Select
+                    color="secondary"
+                    margin="dense"
+                    variant="outlined"
+                    fullWidth={true}
+                    label="Currency"
+                    className={classes.textField}
+                    value={currency}
+                    name="currency">
+                    <MenuItem value="">Select Currency</MenuItem>
+                    <MenuItem value="GHS">GHS</MenuItem>
+                    <MenuItem value="USD">USD</MenuItem>
+                </Select>
+
 
                 <TextField
                     fullWidth={true}
                     value={paymentReference}
-                    className={classes.textField}
                     placeholder="Enter payment reference"
                     label="Payment reference"
                     margin="dense"
+                    className={classes.textField}
                     variant="outlined"
                     name="paymentReference"
                     color="secondary"
@@ -280,6 +282,7 @@ const CreateDeliveryDialog = ({open, handleClose}) => {
                     fullWidth={true}
                     margin="dense"
                     variant="outlined"
+                    className={classes.textField}
                     label="Payment Method"
                     value={paymentMethod}
                     name="paymentMethod">

@@ -30,9 +30,19 @@ const ProfileEntry = ({label, icon, value}) => {
                 {icon}
             </Grid>
             <Grid item={true}>
-                <Typography color="textSecondary" variant="body2" className={classes.label}>{label}</Typography>
-                <Typography noWrap={true} color="textSecondary" variant="body2"
-                            className={classes.value}>{value}</Typography>
+                <Typography
+                    color="textSecondary"
+                    variant="body2"
+                    className={classes.label}>
+                    {label}
+                </Typography>
+                <Typography
+                    noWrap={true}
+                    color="textSecondary"
+                    variant="body2"
+                    className={classes.value}>
+                    {value}
+                </Typography>
             </Grid>
         </Grid>
     )
