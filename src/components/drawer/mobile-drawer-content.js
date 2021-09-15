@@ -1,10 +1,17 @@
 import React from "react";
-import {Button, Container, Divider, Grid} from "@material-ui/core";
+import {Box, Button, Container, Divider, Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
-import {Link} from "react-router-dom";
-import {Close, Dashboard, KeyboardArrowRight, Settings} from "@material-ui/icons";
+import {
+    Archive,
+    Close,
+    Dashboard,
+    Face,
+    Favorite, Settings,
+    Telegram
+} from "@material-ui/icons";
 import {useSelector} from "react-redux";
 import {selectUI} from "../../redux/ui/ui-reducer";
+import LinkItem from "../shared/link-item";
 
 const MobileDrawerContent = ({handleDrawerClose}) => {
 
@@ -48,11 +55,15 @@ const MobileDrawerContent = ({handleDrawerClose}) => {
                 height: 25
             },
             divider: {
-                marginTop: 8,
-                marginBottom: 8
+                marginTop: 12,
+                marginBottom: 12
             },
             container: {
                 marginTop: 32
+            },
+            linksContainer: {
+                paddingTop: 16,
+                paddingBottom: 16
             }
         }
     });
@@ -66,100 +77,29 @@ const MobileDrawerContent = ({handleDrawerClose}) => {
                     <Button variant="outlined" startIcon={<Close/>} onClick={handleDrawerClose}>Close</Button>
                 </Grid>
             </Grid>
-            <Grid container={true} direction="column" className={classes.container}>
-                <Grid item={true} alignItems="center" container={true} justifyContent="space-around">
-                    <Link to="/" className={classes.link}>
-                        <Button
-                            startIcon={<Dashboard className={classes.icon}/>}
-                            variant="text"
-                            size="small"
-                            className={classes.button}>
-                            Dashboard
-                        </Button>
-                    </Link>
-                    <KeyboardArrowRight className={classes.iconRight}/>
-                </Grid>
+            <Box className={classes.linksContainer}>
+                <LinkItem icon={<Dashboard className={classes.icon}/>} link="/" label="Dashboard"/>
 
-                <Divider light={true} className={classes.divider} variant="middle"/>
+                <Divider light={true} className={classes.divider} variant="fullWidth"/>
 
-                <Grid item={true} alignItems="center" container={true} justifyContent="space-around">
-                    <Link to="/parcels" className={classes.link}>
-                        <Button
-                            startIcon={<Dashboard className={classes.icon}/>}
-                            fullWidth={false}
-                            variant="text"
-                            size="small"
-                            className={classes.button}>
-                            Parcels
-                        </Button>
-                    </Link>
-                    <KeyboardArrowRight className={classes.iconRight}/>
-                </Grid>
+                <LinkItem icon={<Favorite className={classes.icon}/>} link="/parcels" label="Parcels"/>
 
-                <Divider light={true} className={classes.divider} variant="middle"/>
+                <Divider light={true} className={classes.divider} variant="fullWidth"/>
 
-                <Grid item={true} alignItems="center" container={true} justifyContent="space-around">
-                    <Link to="/deliveries" className={classes.link}>
-                        <Button
-                            startIcon={<Dashboard className={classes.icon}/>}
-                            fullWidth={true}
-                            variant="text"
-                            size="small"
-                            className={classes.button}>
-                            Deliveries
-                        </Button>
-                    </Link>
-                    <KeyboardArrowRight className={classes.iconRight}/>
-                </Grid>
+                <LinkItem icon={<Telegram className={classes.icon}/>} link="/deliveries" label="Deliveries"/>
 
-                <Divider light={true} className={classes.divider} variant="middle"/>
+                <Divider light={true} className={classes.divider} variant="fullWidth"/>
 
-                <Grid item={true} alignItems="center" container={true} justifyContent="space-around">
-                    <Link to="/archives" className={classes.link}>
-                        <Button
-                            startIcon={<Dashboard className={classes.icon}/>}
-                            fullWidth={true}
-                            variant="text"
-                            size="small"
-                            className={classes.button}>
-                            Archives
-                        </Button>
-                    </Link>
-                    <KeyboardArrowRight className={classes.iconRight}/>
-                </Grid>
+                <LinkItem icon={<Archive className={classes.icon}/>} link="/archives" label="Archives"/>
 
-                <Divider light={true} className={classes.divider} variant="middle"/>
+                <Divider light={true} className={classes.divider} variant="fullWidth"/>
 
-                <Grid item={true} alignItems="center" container={true} justifyContent="space-around">
-                    <Link to="/profile" className={classes.link}>
-                        <Button
-                            startIcon={<Dashboard className={classes.icon}/>}
-                            fullWidth={true}
-                            variant="text"
-                            size="small"
-                            className={classes.button}>
-                            Profile
-                        </Button>
-                    </Link>
-                    <KeyboardArrowRight className={classes.iconRight}/>
-                </Grid>
+                <LinkItem icon={<Face className={classes.icon} />} link="/profile" label="Profile"/>
 
-                <Divider light={true} className={classes.divider} variant="middle"/>
+                <Divider light={true} className={classes.divider} variant="fullWidth"/>
 
-                <Grid item={true} alignItems="center" container={true} justifyContent="space-around">
-                    <Link to="/settings" className={classes.link}>
-                        <Button
-                            startIcon={<Settings className={classes.icon}/>}
-                            fullWidth={true}
-                            variant="text"
-                            size="small"
-                            className={classes.button}>
-                            Settings
-                        </Button>
-                    </Link>
-                    <KeyboardArrowRight className={classes.iconRight}/>
-                </Grid>
-            </Grid>
+                <LinkItem icon={<Settings className={classes.icon}/>} link="/settings" label="Settings"/>
+            </Box>
         </Container>
     )
 }
