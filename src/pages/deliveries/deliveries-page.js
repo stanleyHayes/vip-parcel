@@ -68,6 +68,7 @@ const DeliveriesPage = () => {
                             className={classes.textField}
                             placeholder="Search Deliveries..."
                             margin="dense"
+                            color="secondary"
                             variant="outlined"
                             name="search"
                             type="text"
@@ -105,13 +106,11 @@ const DeliveriesPage = () => {
                                     <TableCell align="center">#</TableCell>
                                     <TableCell align="center">Sender</TableCell>
                                     <TableCell align="center">Recipient</TableCell>
-                                    <TableCell align="center">Service Officer</TableCell>
-                                    <TableCell align="center">Driver</TableCell>
                                     <TableCell align="center">Parcel</TableCell>
-                                    <TableCell align="center">Price</TableCell>
+                                    <TableCell align="center">Value</TableCell>
                                     <TableCell align="center">Status</TableCell>
                                     <TableCell align="center">Tracking</TableCell>
-                                    <TableCell align="center">Bus</TableCell>
+                                    <TableCell align="center">Reg. No</TableCell>
                                     <TableCell align="center">Actions</TableCell>
                                 </TableRow>
                             </TableHead>
@@ -122,10 +121,8 @@ const DeliveriesPage = () => {
                                             <TableCell align="center">{index + 1}</TableCell>
                                             <TableCell align="center">{`${delivery.sender.name} (${delivery.sender.phone})`}</TableCell>
                                             <TableCell align="center">{`${delivery.recipient.name} (${delivery.recipient.phone})`}</TableCell>
-                                            <TableCell align="center">{`${delivery.sourceOfficer.name} (${delivery.sourceOfficer.phone})`}</TableCell>
-                                            <TableCell align="center">{`${delivery.driver.name} (${delivery.driver.phone})`}</TableCell>
                                             <TableCell align="center">{delivery.parcel.item}</TableCell>
-                                            <TableCell align="center">{delivery.price.currency} {parseFloat(delivery.price.amount).toFixed(2)}</TableCell>
+                                            <TableCell align="center">{delivery.value.currency} {parseFloat(delivery.value.amount).toFixed(2)}</TableCell>
                                             <TableCell align="center">{delivery.status}</TableCell>
                                             <TableCell align="center">{delivery.tracking}</TableCell>
                                             <TableCell align="center">{delivery.bus.number}</TableCell>

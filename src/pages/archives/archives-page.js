@@ -66,10 +66,12 @@ const ArchivesPage = () => {
                         <TextField
                             fullWidth={true}
                             className={classes.textField}
-                            placeholder="Search..."
+                            placeholder="Search Delivery Archives"
                             margin="dense"
+                            color="secondary"
+                            name="search"
                             variant="outlined"
-                            name="search Delivery Archives"
+                            label="Search"
                         />
                     </Grid>
                 </Grid>
@@ -92,13 +94,11 @@ const ArchivesPage = () => {
                                     <TableCell align="center">#</TableCell>
                                     <TableCell align="center">Sender</TableCell>
                                     <TableCell align="center">Recipient</TableCell>
-                                    <TableCell align="center">Service Officer</TableCell>
-                                    <TableCell align="center">Driver</TableCell>
                                     <TableCell align="center">Parcel</TableCell>
-                                    <TableCell align="center">Price</TableCell>
+                                    <TableCell align="center">Value</TableCell>
                                     <TableCell align="center">Status</TableCell>
                                     <TableCell align="center">Tracking</TableCell>
-                                    <TableCell align="center">Bus</TableCell>
+                                    <TableCell align="center">Reg. No</TableCell>
                                     <TableCell align="center">Actions</TableCell>
                                 </TableRow>
                             </TableHead>
@@ -111,13 +111,9 @@ const ArchivesPage = () => {
                                                 align="center">{`${archive.sender.name} (${archive.sender.phone})`}</TableCell>
                                             <TableCell
                                                 align="center">{`${archive.recipient.name} (${archive.recipient.phone})`}</TableCell>
+                                           <TableCell align="center">{archive.parcel.item}</TableCell>
                                             <TableCell
-                                                align="center">{`${archive.sourceOfficer.name} (${archive.sourceOfficer.phone})`}</TableCell>
-                                            <TableCell
-                                                align="center">{`${archive.driver.name} (${archive.driver.phone})`}</TableCell>
-                                            <TableCell align="center">{archive.parcel.item}</TableCell>
-                                            <TableCell
-                                                align="center">{archive.price.currency} {parseFloat(archive.price.amount).toFixed(2)}</TableCell>
+                                                align="center">{archive.value.currency} {parseFloat(archive.value.amount).toFixed(2)}</TableCell>
                                             <TableCell align="center">{archive.status}</TableCell>
                                             <TableCell align="center">{archive.tracking}</TableCell>
                                             <TableCell align="center">{archive.bus.number}</TableCell>

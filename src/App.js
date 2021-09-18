@@ -13,6 +13,7 @@ import {ThemeProvider} from "@material-ui/styles";
 import {useSelector} from "react-redux";
 import {selectUI} from "./redux/ui/ui-reducer";
 import {THEME} from "./themes/themes";
+import TrackingPage from "./pages/trackings/tracking-page";
 
 function App() {
     const {variant} = useSelector(selectUI);
@@ -28,6 +29,7 @@ function App() {
                 <Route exact={true} path="/profile" component={ProfilePage}/>
                 <Route exact={true} path="/parcels" component={ParcelsPage}/>
                 <Route exact={true} path="/settings" component={SettingsPage}/>
+                <Route exact={true} path="/tracking" component={TrackingPage}/>
             </Switch>
         </ThemeProvider>
     );

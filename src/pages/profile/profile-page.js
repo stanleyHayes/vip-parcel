@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {makeStyles} from "@material-ui/styles";
 import Layout from "../../components/layout/layout";
 import {
@@ -16,6 +16,10 @@ import {useSelector} from "react-redux";
 import {selectAuth} from "../../redux/authentication/authentication-reducer";
 import {Alert} from "@material-ui/lab";
 import ProfileEntry from "../../components/shared/profile-entry";
+import EditProfileDialog from "../../components/dialogs/profile/edit-profile-dialog";
+import EditContactDialog from "../../components/dialogs/profile/edit-contact-dialog";
+import EditAddressDialog from "../../components/dialogs/profile/edit-address-dialog";
+import EditPersonalDetailsDialog from "../../components/dialogs/profile/edit-personal-details-dialog";
 
 const ProfilePage = () => {
     const useStyles = makeStyles(theme => {
@@ -63,6 +67,11 @@ const ProfilePage = () => {
 
     const {authError, authLoading, userData} = useSelector(selectAuth);
 
+    const [editPersonalDetailDialogOpen, setEditPersonalDetailDialogOpen] = useState(false);
+    const [editAddressDialogOpen, setEditAddressDialogOpen] = useState(false);
+    const [editContactDetailDialogOpen, setEditContactDetailDialogOpen] = useState(false);
+    const [editProfileDialogOpen, setEditProfileDialogOpen] = useState(false);
+
     return (
         <Layout>
             {authLoading && <LinearProgress className={classes.loading} variant="query" color="secondary"/>}
@@ -78,6 +87,7 @@ const ProfilePage = () => {
                                     container={true}
                                     justifyContent="flex-end">
                                     <Button
+                                        onClick={() => setEditProfileDialogOpen(true)}
                                         color="secondary"
                                         className={classes.editButton}
                                         size="small"
@@ -133,6 +143,7 @@ const ProfilePage = () => {
                                         </Grid>
                                         <Grid item={true}>
                                             <Button
+                                                onClick={() => setEditPersonalDetailDialogOpen(true)}
                                                 color="secondary"
                                                 className={classes.editButton}
                                                 size="small"
@@ -188,6 +199,7 @@ const ProfilePage = () => {
                                         </Grid>
                                         <Grid item={true}>
                                             <Button
+                                                onClick={() => setEditContactDetailDialogOpen(true)}
                                                 color="secondary"
                                                 className={classes.editButton}
                                                 size="small"
@@ -245,6 +257,7 @@ const ProfilePage = () => {
                                         </Grid>
                                         <Grid item={true}>
                                             <Button
+                                                onClick={() => setEditAddressDialogOpen(true)}
                                                 color="secondary"
                                                 className={classes.editButton}
                                                 size="small"
@@ -303,10 +316,37 @@ const ProfilePage = () => {
                                 </CardContent>
                             </Card>
                         </Grid>
-
                     </Grid>
                 </Grid>
             </Container>
+
+            {
+                editPersonalDetailDialogOpen &&
+                <EditPersonalDetailsDialog
+                    open={editPersonalDetailDialogOpen}
+                    handleClose={() => setEditPersonalDetailDialogOpen(false)}/>
+            }
+
+            {
+                editAddressDialogOpen &&
+                <EditAddressDialog
+                    open={editAddressDialogOpen}
+                    handleClose={() => setEditAddressDialogOpen(false)}/>
+            }
+
+            {
+                editContactDetailDialogOpen &&
+                <EditContactDialog
+                    open={editContactDetailDialogOpen}
+                    handleClose={() => setEditContactDetailDialogOpen(false)}/>
+            }
+
+            {
+                editProfileDialogOpen &&
+                <EditProfileDialog
+                    open={editProfileDialogOpen}
+                    handleClose={() => setEditProfileDialogOpen(false)}/>
+            }
         </Layout>
     )
 }

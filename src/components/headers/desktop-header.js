@@ -1,5 +1,15 @@
 import React, {useState} from "react";
-import {Badge, Button, Grid, makeStyles, Menu, MenuItem, TextField, Toolbar, Typography} from "@material-ui/core";
+import {
+    Avatar,
+    Badge,
+    Button,
+    Grid,
+    makeStyles,
+    Menu,
+    MenuItem,
+    Toolbar,
+    Typography
+} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 import {selectUI} from "../../redux/ui/ui-reducer";
 import {Link} from "react-router-dom";
@@ -36,11 +46,18 @@ const DesktopHeader = () => {
                 borderColor: variant === 'dark' ? 'rgb(23, 58, 94)' : 'rgb(234, 238, 243)',
                 backgroundColor: variant === 'dark' ? 'rgb(23, 58, 94, 0.5)' : 'rgb(234, 238, 243, 0.5)',
                 color: variant === 'dark' ? 'rgb(234, 238, 243, 0.5)' : 'rgb(23, 58, 94, 0.5)',
-                width: 32,
-                height: 32
+                width: 35,
+                height: 35,
+                cursor: 'pointer'
             },
             button: {
                 backgroundColor: variant === 'dark' ? 'rgb(23, 58, 94, 0.5)' : 'rgb(234, 238, 243, 0.5)',
+                width: 35,
+                height: 35,
+                cursor: 'pointer'
+            },
+            name: {
+                cursor: 'pointer'
             }
         }
     });
@@ -74,15 +91,19 @@ const DesktopHeader = () => {
                 </Grid>
                 <Grid item={true} container={true} lg={6} justifyContent="flex-end" alignItems="center">
                     <Grid item={true} className={classes.gridItem}>
-                        <TextField
-                            fullWidth={true}
-                            className={classes.textField}
-                            placeholder="Search..."
-                            margin="dense"
-                            variant="outlined"
-                            name="search"
-                            label="Search"
-                        />
+                        <Avatar
+                            onClick={handleMenuClick}
+                            className={classes.button}
+                            src="/images/image.jpg"/>
+                    </Grid>
+                    <Grid item={true} className={classes.gridItem}>
+                        <Typography
+                            onClick={handleMenuClick}
+                            display="inline"
+                            className={classes.name}
+                            color="textSecondary"
+                            variant="body2"
+                            align="center">Stanley</Typography>
                     </Grid>
                     <Grid item={true} className={classes.gridItem}>
                         <Badge badgeContent={6} color="secondary">
@@ -94,25 +115,18 @@ const DesktopHeader = () => {
                             <Brightness7 onClick={() => dispatch(toggleTheme())} className={classes.icon}/>
                         ) : <Brightness4 onClick={() => dispatch(toggleTheme())} className={classes.icon}/>}
                     </Grid>
-                    <Grid item={true} className={classes.gridItem}>
-                        <Button
-                            className={classes.button}
-                            onClick={handleMenuClick}
-                            variant="outlined"
-                            size="small">SH</Button>
-                        <Menu anchorEl={anchorEl} variant="menu" open={menuOpen} onClose={handleMenuClose}>
-                            <MenuItem>
-                                <Link to="/profile" className={classes.link}>
-                                    <Button variant="text" size="small">Profile</Button>
-                                </Link>
-                            </MenuItem>
-                            <MenuItem>
-                                <Button variant="text" size="small">Logout</Button>
-                            </MenuItem>
-                        </Menu>
-                    </Grid>
                 </Grid>
             </Grid>
+            <Menu anchorEl={anchorEl} variant="menu" open={menuOpen} onClose={handleMenuClose}>
+                <MenuItem>
+                    <Link to="/profile" className={classes.link}>
+                        <Button variant="text" size="small">Profile</Button>
+                    </Link>
+                </MenuItem>
+                <MenuItem>
+                    <Button variant="text" size="small">Logout</Button>
+                </MenuItem>
+            </Menu>
         </Toolbar>
     )
 }
